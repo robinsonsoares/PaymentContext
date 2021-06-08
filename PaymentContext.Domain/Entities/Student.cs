@@ -14,12 +14,14 @@ namespace PaymentContext.Domain.Entities
             Document = document;
             Email = email;
             _substriptions = new List<Subscription>();
+
+            AddNotifications(name, document, email);
         }
 
         public Name Name { get; private set; }
         public Document Document { get; private set; }
         public Email Email { get; private set; }
-        public string Adress { get; private set; }
+        public Address Adress { get; private set; }
         public IReadOnlyCollection<Subscription> Subscriptions { get { return _substriptions.ToArray(); } }
 
         public void AddSubscription(Subscription subscription)
