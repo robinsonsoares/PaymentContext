@@ -8,20 +8,21 @@ namespace PaymentContext.Domain.Commands
 {
     public class CreateBoletoSubscriptionCommand : Notifiable, ICommand
     {
-        public string Firstname { get; set; }
-        public string Lastname { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Document { get; set; }
         public string Email { get; set; }
 
         public string BarCode { get; set; }
         public string BoletoNumber { get; set; }
-        public string PaymentNumber { get; set; }
 
+        public string PaymentNumber { get; set; }
         public DateTime PaidDate { get; set; }
         public DateTime ExpireDate { get; set; }
         public decimal Total { get; set; }
         public decimal TotalPaid { get; set; }
         public string Payer { get; set; }
+        public string PayerDocument { get; set; }
         public EDocumentType PayerDocumentType { get; set; }
         public string PayerEmail { get; set; }
 
@@ -33,13 +34,13 @@ namespace PaymentContext.Domain.Commands
         public string Country { get; set; }
         public string ZipCode { get; set; }
 
-        public void Validdate()
+        public void Validate()
         {
             AddNotifications(new Contract()
                 .Requires()
-                .HasMinLen(Firstname, 3, "Name.Firstname", "Nome deve conter pelo menos 3 caracteres")
-                .HasMinLen(Lastname, 3, "Name.Lastname", "Sobrenome deve conter pelo menos 3 caracteres")
-                .HasMaxLen(Firstname, 40, "Name.Firstname", "Nome deve conter até 40 caracteres")
+                .HasMinLen(FirstName, 3, "Name.Firstname", "Nome deve conter pelo menos 3 caracteres")
+                .HasMinLen(LastName, 3, "Name.Lastname", "Sobrenome deve conter pelo menos 3 caracteres")
+                .HasMaxLen(FirstName, 40, "Name.Firstname", "Nome deve conter até 40 caracteres")
             );
         }
     }
